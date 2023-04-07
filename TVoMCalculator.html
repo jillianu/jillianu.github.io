@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Super Awesome Cool Calculator</h1>
+
+	<img src="./images/formula.jpg" width="900">
+
+	<br><br>
+
+	<form>
+		<label for="TVoM">Total Value of Metaphor = </label>
+  		<input type="text" id="TVoM" name="TVoM">
+  		<label for="TVoM">mins</label><br><br>
+  		
+  		<label for="ToGE">Time of Geological Event = </label>
+  		<input type="text" id="ToGE" name="ToGE">
+  		<label for="TVoM">years</label><br><br>
+  		
+  		<label for="TToU">Total Time of Universe = </label>
+  		<input type="text" id="TToU" name="TVoM" value="4540000000">
+  		<label for="TVoM">years</label><br><br>
+  		
+	</form>
+	<button onclick="calculate(this)">Click me</button>
+	<br>
+	<p id="answer">X = </p>
+
+	<script type="text/javascript">
+		function calculate(element) {
+			let TVoM = parseFloat(document.getElementById('TVoM').value);
+			let ToGE = parseFloat(document.getElementById('ToGE').value);
+			let TToU = parseFloat(document.getElementById('TToU').value);
+			let answer = document.getElementById('answer');
+
+			let result = TVoM - ((ToGE*TVoM)/TToU);
+			answer.innerHTML = `X = ${result}`
+		}
+	</script>
+</body>
+</html>
