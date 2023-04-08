@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Jillian's Website</title>
+    <!--link href="./style.css" rel="stylesheet"-->
+  </head>
+  <body>
+    <h1>Percent Calculator</h1>
+    <br>
+    <select id="QueryDropDown" onchange="loadContent(this.value)">
+        <option value='1'>What is x% of y</option>
+        <option value="2">How much is x% off of y</option>
+        <option value="3">Percent increase from x to y</option>
+    </select>
+
+    <br><br>
+    <div class='content'>
+      <label for="x">X = </label>
+      <input name="x" type="text" class="x">
+      <label for="y">Y = </label>
+      <input name="y" type="text" class="y">
+      <button class="action" onclick="xPercentOfY()">Click ME!!</button>
+      <br>
+      <p class="answer">a</p>
+    </div>
+
+    <script type="text/javascript">
+      function loadContent(value) {
+        let content = document.querySelector(".content");
+        let button = content.querySelector(".action");
+        if (value == '1') {
+          button.onclick = xPercentOfY;
+          button.onclick();
+        } else if (value == '2') {
+          button.onclick = xPercentOffY;
+          button.onclick();
+        } else if (value == '3') {
+          button.onclick = increaseXtoY;
+          button.onclick();
+        }
+      }
+
+      function xPercentOfY() {
+        let content = document.querySelector(".content");
+        let x = parseFloat(content.querySelector(".x").value);
+        let y = parseFloat(content.querySelector(".y").value);
+        if (isNaN(x) || isNaN(y)) {
+          return;
+        }
+        let value = (x / 100) * y;
+        resultP = content.querySelector(".answer");
+        resultP.innerHTML = `${x}% of ${y} = ${value}`;
+      }
+
+      function xPercentOffY() {
+        let content = document.querySelector(".content");
+        let x = parseFloat(content.querySelector(".x").value);
+        let y = parseFloat(content.querySelector(".y").value);
+        if (isNaN(x) || isNaN(y)) {
+          return;
+        }
+        let value = (1 - (x/100)) * y;
+        resultP = content.querySelector(".answer");
+        resultP.innerHTML = `${x}% off $${y} = $${value}`;
+      }
+
+      function increaseXtoY() {
+        let content = document.querySelector(".content");
+        let x = parseFloat(content.querySelector(".x").value);
+        let y = parseFloat(content.querySelector(".y").value); 
+        if (isNaN(x) || isNaN(y)) {
+          return;
+        }
+        let value = ((y - x) / x) * 100;
+        resultP = content.querySelector(".answer");
+        resultP.innerHTML = `Percent increase from ${x} to ${y} = ${value}%`;
+      }
+    </script>
+  </body>
+</html>
